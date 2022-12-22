@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { loadPost } from "../../utils/Post.ts";
+import { loadPost } from "../../utils/post.ts";
 import { CSS } from "https://deno.land/x/gfm@0.1.26/mod.ts";
 
 export const handler: Handlers = {

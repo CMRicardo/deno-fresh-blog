@@ -1,4 +1,4 @@
-import { loadPost } from "./Post.ts";
+import { loadPost } from "./post.ts";
 import { assertEquals } from "$std/testing/asserts.ts";
 
 const { test } = Deno;
