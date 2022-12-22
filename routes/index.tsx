@@ -12,6 +12,7 @@ export const handler: Handlers = {
 export default function Home(props: PageProps) {
   const { data } = props;
   const { posts } = data;
+  console.log("Posts: 🙈", posts);
   return (
     <main class="p-4 grid gap-4">
       <h1 class="text-4xl font-bold">My blog</h1>
@@ -20,7 +21,7 @@ export default function Home(props: PageProps) {
           <h2 class="text-2xl font-bold">
             <a
               class="hover:text-blue-500 "
-              href={`/blog/${post.title}`}
+              href={`/blog/${post.id}`}
             >
               {post.title}
             </a>
