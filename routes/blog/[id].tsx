@@ -1,6 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { loadPost } from "../../utils/post.ts";
 import { CSS } from "https://deno.land/x/gfm@0.1.26/mod.ts";
+import Button from "../../islands/Button.tsx";
 
 export const handler: Handlers = {
   async GET(request, context) {
@@ -15,10 +16,13 @@ export default function PostPage(props: PageProps) {
 
   return (
     <article class="p-4">
-      <h1 class="text-2xl font-bold">{post.title}</h1>
-      <time class="text-sm">
-        {Intl.DateTimeFormat("en-us").format(post.date)}
-      </time>
+      <header>
+        <h1 class="text-2xl font-bold">{post.title}</h1>
+        <time class="text-sm">
+          {Intl.DateTimeFormat("en-us").format(post.date)}
+        </time>
+      </header>
+      <Button />
       <style dangerouslySetInnerHTML={{ __html: CSS }}></style>
       <div
         class="markdown-body"
