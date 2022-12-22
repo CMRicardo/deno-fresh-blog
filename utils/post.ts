@@ -3,13 +3,11 @@ import { render } from "https://deno.land/x/gfm@0.1.26/mod.ts";
 import { Post } from "../types.d.ts";
 
 export async function loadPost(id: string): Promise<Post | null> {
-  let raw: string;
+  const raw = await Deno
+    .readTextFile(`./content/posts/${id}.md`)
+    .catch(() => null);
 
-  try {
-    raw = await Deno.readTextFile(`./content/posts/${id}.md`);
-  } catch {
-    return null;
-  }
+  if (!raw) return null;
 
   const { attrs, body } = extract(raw);
   const params = attrs as Record<string, string>;
@@ -39,7 +37,6 @@ export async function listPost(): Promise<Post[]> {
 
   posts.sort((a, b) => {
     return b.date.getTime() - a.date.getTime(); // DESC
-    // return a.date.getTime() - b.date.getTime(); // ASC
   });
 
   return posts;
